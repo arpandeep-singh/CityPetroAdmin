@@ -1,5 +1,5 @@
 import 'package:citypetro/auhenticate/authenticate.dart';
-import 'package:citypetro/dashboard.dart';
+import 'package:citypetro/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:citypetro/auhenticate/user.dart';
@@ -11,7 +11,7 @@ class Wrapper extends StatelessWidget {
     if(user==null){
       return Authenticate();
     }else{
-      return Dashboard();
+      return Homepage();
     }
 
   }

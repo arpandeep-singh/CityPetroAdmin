@@ -8,12 +8,10 @@ import 'package:select_dialog/select_dialog.dart';
 import 'package:citypetro/addLoad/load.dart';
 import 'package:citypetro/addLoad/site.dart';
 import 'package:citypetro/services/Database.dart';
-import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:citypetro/auhenticate/user.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
-import 'dart:convert';
+
 
 class EditLoadScreen extends StatefulWidget {
   LoadDetailObject load;
@@ -112,7 +110,7 @@ class _EditLoadScreenState extends State<EditLoadScreen> {
        var loadData =({
         'stationID': widget.load.stationID,
         'city':widget.load.city,
-        'rate':widget.load.rate-widget.load.splits*20,
+        'rate':widget.load.rate,
         'date':widget.load.date,
         'order':widget.load.order,
         'truck':widget.load.truck,

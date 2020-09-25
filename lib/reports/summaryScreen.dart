@@ -1,12 +1,10 @@
 import 'package:citypetro/constraints.dart';
 import 'package:citypetro/reports/editLoad.dart';
-import 'package:citypetro/services/Database.dart';
 import 'package:flutter/material.dart';
 import 'package:citypetro/reports/LoadDetailObject.dart';
 import 'package:provider/provider.dart';
 import 'package:citypetro/auhenticate/user.dart';
-import 'dart:io';
-import 'package:image_picker/image_picker.dart';
+
 
 class SummaryScreen extends StatefulWidget {
   final LoadDetailObject load;

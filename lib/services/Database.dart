@@ -1,7 +1,6 @@
-import 'package:citypetro/auhenticate/user.dart';
+
 import 'package:citypetro/reports/invoice/driver.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:io';
@@ -14,12 +13,6 @@ class DatabaseService {
   DatabaseService({this.uid, this.name});
 
 
-//  Future<bool> isAdmin(){
-//    Firestore.instance.collection('Users').document(uid).get().then((doc){
-//
-//      return doc.data['role']=='admin'?true:false;
-//    });
-//  }
   Future<void> addLoad(loadData, List<String> files) async {
     Firestore.instance.collection('Users').document(uid)
         .collection('Loads')
@@ -170,6 +163,52 @@ class DatabaseService {
       }
 
  }
+
+ Future<bool> updateRate(String docID,rates)async{
+
+    try {
+      bool status = await Firestore.instance.collection('Rates').document(docID).updateData({
+        "city": rates['city'],
+        "rateToronto": rates['toronto'],
+        "rateOakville": rates['oakville'],
+        "rateHamilton": rates['hamilton'],
+        "rateNanticoke": rates['nanticoke'],
+
+      }).then((_){
+        print("Success!");
+        return true;
+      }).catchError((error){
+        return false;
+      });
+     return status;
+    }catch(error){
+      return false;
+    }
+ }
+
+  Future<bool> addSite(String stationID, rates)async{
+
+    try {
+      bool status = await Firestore.instance.collection('Rates').document(stationID).setData({
+        "city": rates['city'],
+        "rateToronto": rates['toronto'],
+        "rateOakville": rates['oakville'],
+        "rateHamilton": rates['hamilton'],
+        "rateNanticoke": rates['nanticoke'],
+        "stationID":rates['stationID']
+
+      }).then((_){
+        print("Success!");
+        return true;
+      }).catchError((error){
+        return false;
+      });
+      return status;
+    }catch(error){
+      return false;
+    }
+  }
+
 
 
   }

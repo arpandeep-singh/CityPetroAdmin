@@ -1,4 +1,5 @@
 import 'package:citypetro/constraints.dart';
+import 'package:citypetro/dipCharts/PDFScreen.dart';
 import 'package:citypetro/reports/invoice/driver.dart';
 import 'package:citypetro/reports/invoice/invoiceTemplate.dart';
 import 'package:citypetro/services/Database.dart';
@@ -10,8 +11,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_html_to_pdf/flutter_html_to_pdf.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:open_file/open_file.dart';
-import 'package:slide_to_confirm/slide_to_confirm.dart';
 
 class CreateInvoice extends StatefulWidget {
   final String uid;
@@ -49,8 +48,14 @@ class _CreateInvoiceState extends State<CreateInvoice> {
 
   Future<void> openFile() async {
     await pdfAsset(generatedPdfFilePath).then((file){
+      print(file.path);
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => PDFScreen(file.path,"INVOICE")),
+      );
 
-      OpenFile.open(file.path);});
+     // OpenFile.open(file.path,type: "application/pdf");
+    });
   }
 
   Future<File> pdfAsset(String path) async {
@@ -271,7 +276,7 @@ class _CreateInvoiceState extends State<CreateInvoice> {
                           company = newValue;
                         });
                       },
-                      items: <String>['CITY PETROLEUM INC.', '2408612 ONTARIO INC.']
+                      items: <String>['CITY PETROLEUM INC.', '2453293 ONTARIO INC.']
                           .map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
@@ -318,7 +323,10 @@ class _CreateInvoiceState extends State<CreateInvoice> {
                               highlightedBorderColor: Color(0xFF7e60e4),
                               borderSide: BorderSide(color: Color(0xFF7e60e4),width: 2),
                               onPressed: (){
-                                openFile();
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => PDFScreen(this.generatedPdfFilePath,"INVOICE")),
+                                );
                               }
                           ),
                         ),

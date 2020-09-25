@@ -7,7 +7,6 @@ import 'package:select_dialog/select_dialog.dart';
 import 'package:citypetro/addLoad/load.dart';
 import 'package:citypetro/addLoad/site.dart';
 import 'package:citypetro/services/Database.dart';
-import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:citypetro/auhenticate/user.dart';
 import 'package:file_picker/file_picker.dart';
@@ -133,18 +132,18 @@ class _DailyReportState extends State<DailyReport> {
   }
 
 
-  Future uploadImage(ImageSource source) async {
+ // Future uploadImage(ImageSource source) async {
 
-    File  image = await ImagePicker.pickImage(source: source);
+   // File  image = await ImagePicker.pickImage(source: source);
 
-    if(image!=null){
-      setState(() {
-        documents.add(image);
-      });
-    }
+    //if(image!=null){
+      //setState(() {
+        //documents.add(image);
+      //});
+    //}
 
 
-  }
+  //}
 
 
   Future pickDocument() async {
@@ -703,16 +702,16 @@ class _DailyReportState extends State<DailyReport> {
               ListTile(
                 leading: Icon(Icons.camera),
                 title: Text("Camera"),
-                onTap: ()=>uploadImage(ImageSource.camera).then((result){
-                  Navigator.pop(context);
-                }),
+               // onTap: ()=>uploadImage(ImageSource.camera).then((result){
+                 // Navigator.pop(context);
+                //}),
               ),
               ListTile(
                 leading: Icon(Icons.photo),
                 title: Text("Photos"),
-                  onTap: ()=>uploadImage(ImageSource.gallery).then((result){
-                    Navigator.pop(context);
-                  }),
+                 // onTap: ()=>uploadImage(ImageSource.gallery).then((result){
+                   // Navigator.pop(context);
+                  //}),
               ),
 
               ListTile(

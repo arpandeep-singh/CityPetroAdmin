@@ -1,16 +1,7 @@
-import 'package:citypetro/constraints.dart';
-import 'package:citypetro/main.dart';
 import 'package:citypetro/services/Database.dart';
-import 'package:citypetro/siteMaps/PDFScreen.dart';
 import 'package:citypetro/siteMaps/loadPDF.dart';
-import 'package:citypetro/siteMaps/mobile_pdf.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'dart:io';
-import 'package:flutter_full_pdf_viewer/full_pdf_viewer_scaffold.dart';
-import 'package:path_provider/path_provider.dart';
-import 'dart:async';
 import 'package:flutter/foundation.dart';
 
 
